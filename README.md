@@ -11,7 +11,6 @@ This document explains **how the community model works**, and how different user
 
 Tujijenge organizes vendors into **neighborhood-based micro-communities**, typically within a **1-kilometer radius**. Each community consists of vendors operating within the same locality, allowing them to:
 
-- Share knowledge and questions
 - Access suppliers nearby
 - Receive targeted training
 - Build local trust and accountability
@@ -24,10 +23,8 @@ These communities are automatically formed based on the **location** provided du
 
 Vendors are automatically placed into their nearest Tujijenge community. Inside their group, they can:
 
-- Post **questions** or **challenges** they're facing
-- See nearby **suppliers and trainers** available for support
-- Access **offers** or **bulk discounts** shared with the group
-- Organize or attend local **learning sessions** or **meet-ups**
+- Access **offers** from centeralized suppliers.
+- Attend **learning sessions** and get ** verified**
 
 Each vendor sees content, trainers, and suppliers that are **relevant to their area**, increasing convenience and trust.
 
@@ -35,10 +32,10 @@ Each vendor sees content, trainers, and suppliers that are **relevant to their a
 
 ## 🚛 How Suppliers Benefit from Vendor Communities
 
-Suppliers are not just added to the platform—they are **mapped to vendor communities** in specific locations. This allows them to:
+This allows them to:
 
 - **Reach a concentrated group** of active vendors in their delivery zone
-- Share **bulk offers**, **discounts**, or **delivery schedules** directly to groups
+- Share **bulk offers** and  **delivery schedules** directly to groups
 - Get **real-time inquiries** from vendors in specific communities
 - Reduce **delivery costs** by serving multiple nearby vendors at once
 
@@ -50,12 +47,10 @@ Suppliers are not just added to the platform—they are **mapped to vendor commu
 
 Trainers are also connected to location-based vendor groups. This allows them to:
 
-- Promote **local training sessions** based on real vendor needs
+- Promote **training sessions** based on real vendor needs
 - Get visibility among vendors **most likely to attend** based on proximity
 - Offer **group sessions** or **follow-ups** for specific areas
 - Build **ongoing mentorship** relationships within a community
-
-💬 Trainers also participate in **community questions**, helping build credibility and relationships before sessions are even booked.
 
 ---
 
@@ -68,32 +63,8 @@ Tujijenge communities are designed to:
 - Help vendors feel **heard**, **connected**, and **supported**
 - Enable trainers and suppliers to **focus on engagement**, not just outreach
 
----
-
-## 📍 Real-World Example
-
-> A supplier in Gikambura wants to deliver vegetables to vendors. Instead of posting publicly, they target the **Gikambura vendor group** — within walking or delivery distance. Vendors there are notified instantly, respond faster, and can even organize **group orders**.
-
-> A trainer teaching mobile money management can create a **1-hour session** for the **Kawangware vendor group**, knowing most members are active during afternoons and share similar business challenges.
-
----
-
-## 🧠 Best Practices
-
-- **Suppliers**: Post offers to active communities.
-- **Trainers**: Answer vendor questions — even before they book — to build trust.
-- **Vendors**: Engage with your local group often — support from within your neighborhood is faster and stronger.
-
----
-
-## 📬 Questions?
-
-Contact us with:
-📩 [tujijenges.evegies@gmail.com](mailto:tujijenges.evegies@gmail.com)
-
----
-
- 🌍 *Tujijenge communities are about more than selling — they’re about support, connection, and growth at the neighborhood level.*
 
 
+
+> 🌍 *Tujijenge communities are about more than selling — they’re about support, connection, and growth at the neighborhood level.*
 
