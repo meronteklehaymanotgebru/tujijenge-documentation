@@ -80,7 +80,7 @@ Tujijenge communities are designed to:
 
 ## 🧠 Best Practices
 
-- **Suppliers**: Post offers to active communities. Focus on consistent presence over mass marketing.
+- **Suppliers**: Post offers to active communities.
 - **Trainers**: Answer vendor questions — even before they book — to build trust.
 - **Vendors**: Engage with your local group often — support from within your neighborhood is faster and stronger.
 
@@ -88,12 +88,12 @@ Tujijenge communities are designed to:
 
 ## 📬 Questions?
 
-Check the **community Help section** inside the platform, or email  
-📩 [support@tujijenge.co.ke](mailto:support@tujijenge.co.ke)
+Contact us with:
+📩 [tujijenges.evegies@gmail.com](mailto:tujijenges.evegies@gmail.com)
 
 ---
 
-> 🌍 *Tujijenge communities are about more than selling — they’re about support, connection, and growth at the neighborhood level.*
+ 🌍 *Tujijenge communities are about more than selling — they’re about support, connection, and growth at the neighborhood level.*
 
 
 
