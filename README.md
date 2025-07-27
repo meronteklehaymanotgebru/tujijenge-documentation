@@ -1,3 +1,4 @@
+
 # Tujijenge User Documentation
 
 **Tujijenge** is built around **location-based communities** of local vendors in Nairobi. These communities are the foundation of the platform - making it easier for suppliers and trainers to connect, engage, and deliver value to vendors within their area.
@@ -93,5 +94,6 @@ Check the **community Help section** inside the platform, or email
 ---
 
 > 🌍 *Tujijenge communities are about more than selling — they’re about support, connection, and growth at the neighborhood level.*
+
 
 
