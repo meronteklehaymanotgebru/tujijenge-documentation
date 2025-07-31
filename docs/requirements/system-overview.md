@@ -14,5 +14,9 @@
 | GAIN         | Training mgmt, verification                | No financial/order access         |
 | Taimba       | Catalog mgmt, order processing             | No training access               |
 
-## Compliance Requirements
-See [Compliance Overview](../compliance/index.md) for detailed requirements
+## Technology Stack
+- **Frontend**: React 18+
+- **Backend**: Django 4.2
+- **Database**: PostgreSQL 15
+- **Hosting**: Heroku
+- **External APIs**: M-Pesa Daraja, Google Maps

@@ -64,6 +64,19 @@ Tujijenge communities are designed to:
 - Enable trainers and suppliers to **focus on engagement**, not just outreach
 
 
+## Documentation
+Full documentation is available in the [docs/](docs/) directory.
+
+## Compliance
+This project complies with:
+- Kenya Data Protection Act (DPA) 2019
+- Food Safety and Public Health Laws
+- Central Bank of Kenya (CBK) regulations
+- Consumer Protection Act 2012
+- AI Ethics standards
+
+See [compliance documentation](docs/compliance/index.md) for details.
+
 
 
 > 🌍 *Tujijenge communities are about more than selling — they’re about support, connection, and growth at the neighborhood level.*
