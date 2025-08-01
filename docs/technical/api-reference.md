@@ -1,4 +1,4 @@
- API Reference
+# API Reference
 
 ## Base URL
 - **Production**: `https://tujijenge.herokuapp.com`
@@ -10,28 +10,31 @@ All endpoints require authentication using token-based access. Include the token
 - **Example**: `Authorization: Token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...`
 
 ## Error Codes
-| HTTP Status | Error Code | Description |
-|-------------|------------|-------------|
-| 400 | BAD_REQUEST | Invalid input data |
-| 401 | UNAUTHORIZED | Authentication failed |
-| 403 | FORBIDDEN | Insufficient permissions |
-| 404 | NOT_FOUND | Resource not found |
-| 500 | INTERNAL_SERVER_ERROR | Server error |
+| HTTP Status | Error Code         | Description              |
+|-------------|--------------------|--------------------------|
+| 400         | BAD_REQUEST        | Invalid input data       |
+| 401         | UNAUTHORIZED       | Authentication failed    |
+| 403         | FORBIDDEN          | Insufficient permissions |
+| 404         | NOT_FOUND          | Resource not found       |
+| 500         | INTERNAL_SERVER_ERROR | Server error          |
 
 **Example Error Response**:
 
-```json
 {
   "error_code": "BAD_REQUEST",
   "message": "Invalid input data"
 }
 
-EndpointsAuthenticationMama Mboga LoginPOST /users/login/
-Description: Authenticates a Mama Mboga user using phone number and PIN.
+## Endpoints
 
+### Authentication
 
-Request Body:
-```json
+#### Mama Mboga Login
+- **POST** `/users/login/`
+- **Description**: Authenticates a Mama Mboga user using phone number and PIN.
+- **Headers**:
+  - `Content-Type: application/json`
+- **Request Body**:
 
 {
   "phone_number": "254712345678",
@@ -39,8 +42,7 @@ Request Body:
   "user_type": "mamamboga"
 }
 
-Response (200):
-```json
+- **Response (200)**:
 
 {
   "status": "success",
@@ -49,20 +51,19 @@ Response (200):
   }
 }
 
-Error Response (401):
-```json
+- **Error Response (401)**:
 
 {
   "error_code": "UNAUTHORIZED",
   "message": "Invalid PIN"
 }
 
-Stakeholder LoginPOST /users/login/
-Description: Authenticates a stakeholder user using email and password.
-
-
-Request Body:
-```json
+#### Stakeholder Login
+- **POST** `/users/login/`
+- **Description**: Authenticates a stakeholder user using email and password.
+- **Headers**:
+  - `Content-Type: application/json`
+- **Request Body**:
 
 {
   "user_type": "stakeholder",
@@ -70,8 +71,7 @@ Request Body:
   "password_hash": "password123"
 }
 
-Response (200):
-```json
+- **Response (200)**:
 
 {
   "status": "success",
@@ -87,20 +87,19 @@ Response (200):
   }
 }
 
-Error Response (401):
-```json
+- **Error Response (401)**:
 
 {
   "error_code": "UNAUTHORIZED",
   "message": "Invalid email or password"
 }
 
-RegisterPOST /users/register/
-Description: Registers a new Mama Mboga or stakeholder user.
-
-
-Request Body (Mama Mboga):
-```json
+#### Register
+- **POST** `/users/register/`
+- **Description**: Registers a new Mama Mboga or stakeholder user.
+- **Headers**:
+  - `Content-Type: application/json`
+- **Request Body (Mama Mboga)**:
 
 {
   "user_type": "mamamboga",
@@ -110,8 +109,7 @@ Request Body (Mama Mboga):
   "pin": "1234"
 }
 
-Request Body (Stakeholder):
-```json
+- **Request Body (Stakeholder)**:
 
 {
   "user_type": "stakeholder",
@@ -122,8 +120,7 @@ Request Body (Stakeholder):
   "role": "trainer"
 }
 
-Response (201):
-```json
+- **Response (201)**:
 
 {
   "status": "success",
@@ -132,40 +129,40 @@ Response (201):
   }
 }
 
-Error Response (400):
-```json
+- **Error Response (400)**:
 
 {
   "error_code": "BAD_REQUEST",
   "message": "Phone number already exists"
 }
 
-LogoutPOST /users/logout/
-Description: Logs out the authenticated user, invalidating the token.
-Headers:Authorization: Token <token>
-
-Response (200):
-```json
+#### Logout
+- **POST** `/users/logout/`
+- **Description**: Logs out the authenticated user, invalidating the token.
+- **Headers**:
+  - `Authorization: Token <token>`
+- **Response (200)**:
 
 {
   "status": "success",
   "message": "Logged out successfully"
 }
 
-Error Response (401):
-```json
+- **Error Response (401)**:
 
 {
   "error_code": "UNAUTHORIZED",
   "message": "Invalid token"
 }
 
-UsersList UsersGET /users/
-Description: Retrieves a list of users.
-Headers:Authorization: Token <token>
+### Users
 
-Response (200):
-```json
+#### List Users
+- **GET** `/users/`
+- **Description**: Retrieves a list of users.
+- **Headers**:
+  - `Authorization: Token <token>`
+- **Response (200)**:
 
 {
   "status": "success",
@@ -186,22 +183,20 @@ Response (200):
   ]
 }
 
-Error Response (403):
-```json
+- **Error Response (403)**:
 
 {
   "error_code": "FORBIDDEN",
   "message": "Insufficient permissions"
 }
 
-Update LocationPOST /users/update-location/
-Description: Updates the location of the authenticated user.
-Headers:Authorization: Token <token>
-Content-Type: application/
-```json
-
-Request Body:
-```json
+#### Update Location
+- **POST** `/users/update-location/`
+- **Description**: Updates the location of the authenticated user.
+- **Headers**:
+  - `Authorization: Token <token>`
+  - `Content-Type: application/json`
+- **Request Body**:
 
 {
   "id": 1,
@@ -209,8 +204,7 @@ Request Body:
   "longitude": 36.8219
 }
 
-Response (200):
-```json
+- **Response (200)**:
 
 {
   "status": "success",
@@ -219,23 +213,22 @@ Response (200):
   }
 }
 
-Error Response (400):
-```json
+- **Error Response (400)**:
 
 {
   "error_code": "BAD_REQUEST",
   "message": "Invalid latitude or longitude"
 }
 
-Communities NearbyGET /users/communities-nearby/
-Description: Retrieves communities near the specified location.
-Headers:Authorization: Token <token>
-
-Query Parameters:latitude: Float (e.g., -1.2921)
-longitude: Float (e.g., 36.8219)
-
-Response (200):
-```json
+#### Communities Nearby
+- **GET** `/users/communities-nearby/`
+- **Description**: Retrieves communities near the specified location.
+- **Headers**:
+  - `Authorization: Token <token>`
+- **Query Parameters**:
+  - `latitude`: Float (e.g., -1.2921)
+  - `longitude`: Float (e.g., 36.8219)
+- **Response (200)**:
 
 {
   "status": "success",
@@ -250,20 +243,21 @@ Response (200):
   ]
 }
 
-Error Response (400):
-```json
+- **Error Response (400)**:
 
 {
   "error_code": "BAD_REQUEST",
   "message": "Missing latitude or longitude"
 }
 
-Stock ManagementList StockGET /stocks/
-Description: Retrieves a list of stock items.
-Headers:Authorization: Token <token>
+### Stock Management
 
-Response (200):
-```json
+#### List Stock
+- **GET** `/stocks/`
+- **Description**: Retrieves a list of stock items.
+- **Headers**:
+  - `Authorization: Token <token>`
+- **Response (200)**:
 
 {
   "status": "success",
@@ -280,22 +274,20 @@ Response (200):
   ]
 }
 
-Error Response (403):
-```json
+- **Error Response (403)**:
 
 {
   "error_code": "FORBIDDEN",
   "message": "Insufficient permissions"
 }
 
-Add StockPOST /stocks/
-Description: Adds a new stock item.
-Headers:Authorization: Token <token>
-Content-Type: application/
-```json
-
-Request Body:
-```json
+#### Add Stock
+- **POST** `/stocks/`
+- **Description**: Adds a new stock item.
+- **Headers**:
+  - `Authorization: Token <token>`
+  - `Content-Type: application/json`
+- **Request Body**:
 
 {
   "mamamboga": 1,
@@ -304,8 +296,7 @@ Request Body:
   "expiration_date": "2023-12-31T23:59:59Z"
 }
 
-Response (201):
-```json
+- **Response (201)**:
 
 {
   "status": "success",
@@ -320,20 +311,21 @@ Response (201):
   }
 }
 
-Error Response (400):
-```json
+- **Error Response (400)**:
 
 {
   "error_code": "BAD_REQUEST",
   "message": "Invalid quantity"
 }
 
-OrdersList OrdersGET /orders/
-Description: Retrieves a list of orders.
-Headers:Authorization: Token <token>
+### Orders
 
-Response (200):
-```json
+#### List Orders
+- **GET** `/orders/`
+- **Description**: Retrieves a list of orders.
+- **Headers**:
+  - `Authorization: Token <token>`
+- **Response (200)**:
 
 {
   "status": "success",
@@ -352,22 +344,20 @@ Response (200):
   ]
 }
 
-Error Response (403):
-```json
+- **Error Response (403)**:
 
 {
   "error_code": "FORBIDDEN",
   "message": "Insufficient permissions"
 }
 
-Create OrderPOST /orders/
-Description: Creates a new order.
-Headers:Authorization: Token <token>
-Content-Type: application/
-```json
-
-Request Body:
-```json
+#### Create Order
+- **POST** `/orders/`
+- **Description**: Creates a new order.
+- **Headers**:
+  - `Authorization: Token <token>`
+  - `Content-Type: application/json`
+- **Request Body**:
 
 {
   "mamamboga": 1,
@@ -378,8 +368,7 @@ Request Body:
   "deadline_at": "2023-12-31T18:00:00Z"
 }
 
-Response (201):
-```json
+- **Response (201)**:
 
 {
   "status": "success",
@@ -396,20 +385,21 @@ Response (201):
   }
 }
 
-Error Response (400):
-```json
+- **Error Response (400)**:
 
 {
   "error_code": "BAD_REQUEST",
   "message": "Invalid product ID"
 }
 
-CommunitiesList CommunitiesGET /communities/
-Description: Retrieves a list of communities.
-Headers:Authorization: Token <token>
+### Communities
 
-Response (200):
-```json
+#### List Communities
+- **GET** `/communities/`
+- **Description**: Retrieves a list of communities.
+- **Headers**:
+  - `Authorization: Token <token>`
+- **Response (200)**:
 
 {
   "status": "success",
@@ -425,22 +415,20 @@ Response (200):
   ]
 }
 
-Error Response (403):
-```json
+- **Error Response (403)**:
 
 {
   "error_code": "FORBIDDEN",
   "message": "Insufficient permissions"
 }
 
-Create CommunityPOST /communities/
-Description: Creates a new community.
-Headers:Authorization: Token <token>
-Content-Type: application/
-```json
-
-Request Body:
-```json
+#### Create Community
+- **POST** `/communities/`
+- **Description**: Creates a new community.
+- **Headers**:
+  - `Authorization: Token <token>`
+  - `Content-Type: application/json`
+- **Request Body**:
 
 {
   "name": "Community A",
@@ -450,8 +438,7 @@ Request Body:
   "created_by": 1
 }
 
-Response (201):
-```json
+- **Response (201)**:
 
 {
   "status": "success",
@@ -465,20 +452,21 @@ Response (201):
   }
 }
 
-Error Response (400):
-```json
+- **Error Response (400)**:
 
 {
   "error_code": "BAD_REQUEST",
   "message": "Name is required"
 }
 
-Training SessionsList Training SessionsGET /training-sessions/
-Description: Retrieves a list of training sessions.
-Headers:Authorization: Token <token>
+### Training Sessions
 
-Response (200):
-```json
+#### List Training Sessions
+- **GET** `/training-sessions/`
+- **Description**: Retrieves a list of training sessions.
+- **Headers**:
+  - `Authorization: Token <token>`
+- **Response (200)**:
 
 {
   "status": "success",
@@ -496,22 +484,20 @@ Response (200):
   ]
 }
 
-Error Response (403):
-```json
+- **Error Response (403)**:
 
 {
   "error_code": "FORBIDDEN",
   "message": "Insufficient permissions"
 }
 
-Create Training SessionPOST /training-sessions/
-Description: Creates a new training session.
-Headers:Authorization: Token <token>
-Content-Type: application/
-```json
-
-Request Body:
-```json
+#### Create Training Session
+- **POST** `/training-sessions/`
+- **Description**: Creates a new training session.
+- **Headers**:
+  - `Authorization: Token <token>`
+  - `Content-Type: application/json`
+- **Request Body**:
 
 {
   "title": "Hygiene Best Practices",
@@ -521,8 +507,7 @@ Request Body:
   "end_date": "2023-12-15T12:00:00Z"
 }
 
-Response (201):
-```json
+- **Response (201)**:
 
 {
   "status": "success",
@@ -538,20 +523,21 @@ Response (201):
   }
 }
 
-Error Response (400):
-```json
+- **Error Response (400)**:
 
 {
   "error_code": "BAD_REQUEST",
   "message": "Invalid date format"
 }
 
-Training RegistrationsList Training RegistrationsGET /training-registrations/
-Description: Retrieves a list of training registrations.
-Headers:Authorization: Token <token>
+### Training Registrations
 
-Response (200):
-```json
+#### List Training Registrations
+- **GET** `/training-registrations/`
+- **Description**: Retrieves a list of training registrations.
+- **Headers**:
+  - `Authorization: Token <token>`
+- **Response (200)**:
 
 {
   "status": "success",
@@ -566,22 +552,20 @@ Response (200):
   ]
 }
 
-Error Response (403):
-```json
+- **Error Response (403)**:
 
 {
   "error_code": "FORBIDDEN",
   "message": "Insufficient permissions"
 }
 
-Register for TrainingPOST /training-registrations/
-Description: Registers a user for a training session.
-Headers:Authorization: Token <token>
-Content-Type: application/
-```json
-
-Request Body:
-```json
+#### Register for Training
+- **POST** `/training-registrations/`
+- **Description**: Registers a user for a training session.
+- **Headers**:
+  - `Authorization: Token <token>`
+  - `Content-Type: application/json`
+- **Request Body**:
 
 {
   "session": 1,
@@ -589,8 +573,7 @@ Request Body:
   "mamamboga": 1
 }
 
-Response (201):
-```json
+- **Response (201)**:
 
 {
   "status": "success",
@@ -603,20 +586,21 @@ Response (201):
   }
 }
 
-Error Response (400):
-```json
+- **Error Response (400)**:
 
 {
   "error_code": "BAD_REQUEST",
   "message": "Session ID is invalid"
 }
 
-ProductsList ProductsGET /products/
-Description: Retrieves a list of products.
-Headers:Authorization: Token <token>
+### Products
 
-Response (200):
-```json
+#### List Products
+- **GET** `/products/`
+- **Description**: Retrieves a list of products.
+- **Headers**:
+  - `Authorization: Token <token>`
+- **Response (200)**:
 
 {
   "status": "success",
@@ -633,20 +617,21 @@ Response (200):
   ]
 }
 
-Error Response (403):
-```json
+- **Error Response (403)**:
 
 {
   "error_code": "FORBIDDEN",
   "message": "Insufficient permissions"
 }
 
-Cart ManagementList CartsGET /carts/
-Description: Retrieves a list of carts. Note: session_id is reserved for future use and currently returns null.
-Headers:Authorization: Token <token>
+### Cart Management
 
-Response (200):
-```json
+#### List Carts
+- **GET** `/carts/`
+- **Description**: Retrieves a list of carts. Note: `session_id` is reserved for future use and currently returns `null`.
+- **Headers**:
+  - `Authorization: Token <token>`
+- **Response (200)**:
 
 {
   "status": "success",
@@ -661,20 +646,19 @@ Response (200):
   ]
 }
 
-Error Response (403):
-```json
+- **Error Response (403)**:
 
 {
   "error_code": "FORBIDDEN",
   "message": "Insufficient permissions"
 }
 
-List Cart ItemsGET /cart-items/
-Description: Retrieves a list of items in carts.
-Headers:Authorization: Token <token>
-
-Response (200):
-```json
+#### List Cart Items
+- **GET** `/cart-items/`
+- **Description**: Retrieves a list of items in carts.
+- **Headers**:
+  - `Authorization: Token <token>`
+- **Response (200)**:
 
 {
   "status": "success",
@@ -688,22 +672,22 @@ Response (200):
   ]
 }
 
-Error Response (403):
-```json
+- **Error Response (403)**:
 
 {
   "error_code": "FORBIDDEN",
   "message": "Insufficient permissions"
 }
 
-Payment ProcessingInitiate M-Pesa PaymentPOST /daraja/stk-push/
-Description: Initiates an M-Pesa STK push payment.
-Headers:Authorization: Token <token>
-Content-Type: application/
-```json
+### Payment Processing
 
-Request Body:
-```json
+#### Initiate M-Pesa Payment
+- **POST** `/daraja/stk-push/`
+- **Description**: Initiates an M-Pesa STK push payment.
+- **Headers**:
+  - `Authorization: Token <token>`
+  - `Content-Type: application/json`
+- **Request Body**:
 
 {
   "phone_number": "254712345678",
@@ -718,8 +702,7 @@ Request Body:
   "transaction_desc": "Payment for order"
 }
 
-Response (200):
-```json
+- **Response (200)**:
 
 {
   "status": "success",
@@ -732,22 +715,22 @@ Response (200):
   }
 }
 
-Error Response (400):
-```json
+- **Error Response (400)**:
 
 {
   "error_code": "BAD_REQUEST",
   "message": "Invalid phone number"
 }
 
-WebhooksM-Pesa Payment CallbackPOST /daraja/callback/
-Description: Receives payment confirmation from M-Pesa.
-Headers:Authorization: Token <token>
-Content-Type: application/
-```json
+### Webhooks
 
-Request Body:
-```json
+#### M-Pesa Payment Callback
+- **POST** `/daraja/callback/`
+- **Description**: Receives payment confirmation from M-Pesa.
+- **Headers**:
+  - `Authorization: Token <token>`
+  - `Content-Type: application/json`
+- **Request Body**:
 
 {
   "Body": {
@@ -772,8 +755,7 @@ Request Body:
   }
 }
 
-Response (200):
-```json
+- **Response (200)**:
 
 {
   "status": "success",
@@ -783,11 +765,10 @@ Response (200):
   }
 }
 
-Error Response (400):
-```json
+- **Error Response (400)**:
 
 {
   "error_code": "BAD_REQUEST",
   "message": "Invalid callback data"
 }
-```
+
