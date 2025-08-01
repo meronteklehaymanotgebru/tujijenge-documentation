@@ -2,7 +2,7 @@
 
 ## Quick Links
 - [System Requirements](requirements/system-overview.md)
-- [Technical Architecture](technical/architecture.md)
+- [Technical Architecture](technical/architechture.md)
 - [Database Schema](technical/database.md)
 - [API Reference](technical/api-reference.md)
 - [External Integrations](technical/integrations.md)
