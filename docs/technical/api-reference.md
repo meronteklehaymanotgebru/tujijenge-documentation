@@ -42,38 +42,39 @@ All endpoints require authentication using token-based access. Include the token
   "pin": "1234",
   "user_type": "mamamboga"
 }
-
+```
 - **Response (200)**:
-
+```json
 {
   "status": "success",
   "data": {
     "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9..."
   }
 }
+```
 
 - **Error Response (401)**:
-
+```json
 {
   "error_code": "UNAUTHORIZED",
   "message": "Invalid PIN"
 }
-
+```
 #### Stakeholder Login
 - **POST** `/users/login/`
 - **Description**: Authenticates a stakeholder user using email and password.
 - **Headers**:
   - `Content-Type: application/json`
 - **Request Body**:
-
+```json
 {
   "user_type": "stakeholder",
   "stakeholder_email": "gain@example.com",
   "password_hash": "password123"
 }
-
+```
 - **Response (200)**:
-
+```json
 {
   "status": "success",
   "data": {
@@ -87,21 +88,21 @@ All endpoints require authentication using token-based access. Include the token
     }
   }
 }
-
+```
 - **Error Response (401)**:
-
+```json
 {
   "error_code": "UNAUTHORIZED",
   "message": "Invalid email or password"
 }
-
+```
 #### Register
 - **POST** `/users/register/`
 - **Description**: Registers a new Mama Mboga or stakeholder user.
 - **Headers**:
   - `Content-Type: application/json`
 - **Request Body (Mama Mboga)**:
-
+```json
 {
   "user_type": "mamamboga",
   "first_name": "Jane",
@@ -109,9 +110,9 @@ All endpoints require authentication using token-based access. Include the token
   "phone_number": "254712345678",
   "pin": "1234"
 }
-
+```
 - **Request Body (Stakeholder)**:
-
+```json
 {
   "user_type": "stakeholder",
   "first_name": "John",
@@ -120,42 +121,42 @@ All endpoints require authentication using token-based access. Include the token
   "password_hash": "password123",
   "role": "trainer"
 }
-
+```
 - **Response (201)**:
-
+```json
 {
   "status": "success",
   "data": {
     "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9..."
   }
 }
-
+```
 - **Error Response (400)**:
-
+```json
 {
   "error_code": "BAD_REQUEST",
   "message": "Phone number already exists"
 }
-
+```
 #### Logout
 - **POST** `/users/logout/`
 - **Description**: Logs out the authenticated user, invalidating the token.
 - **Headers**:
   - `Authorization: Token <token>`
 - **Response (200)**:
-
+```json
 {
   "status": "success",
   "message": "Logged out successfully"
 }
-
+```
 - **Error Response (401)**:
-
+```json
 {
   "error_code": "UNAUTHORIZED",
   "message": "Invalid token"
 }
-
+```
 ### Users
 
 #### List Users
@@ -164,7 +165,7 @@ All endpoints require authentication using token-based access. Include the token
 - **Headers**:
   - `Authorization: Token <token>`
 - **Response (200)**:
-
+```json
 {
   "status": "success",
   "data": [
@@ -183,14 +184,14 @@ All endpoints require authentication using token-based access. Include the token
     }
   ]
 }
-
+```
 - **Error Response (403)**:
-
+```json
 {
   "error_code": "FORBIDDEN",
   "message": "Insufficient permissions"
 }
-
+```
 #### Update Location
 - **POST** `/users/update-location/`
 - **Description**: Updates the location of the authenticated user.
@@ -198,29 +199,29 @@ All endpoints require authentication using token-based access. Include the token
   - `Authorization: Token <token>`
   - `Content-Type: application/json`
 - **Request Body**:
-
+```json
 {
   "id": 1,
   "latitude": -1.2921,
   "longitude": 36.8219
 }
-
+```
 - **Response (200)**:
-
+```json
 {
   "status": "success",
   "data": {
     "address": "Nairobi, Kenya"
   }
 }
-
+```
 - **Error Response (400)**:
-
+```json
 {
   "error_code": "BAD_REQUEST",
   "message": "Invalid latitude or longitude"
 }
-
+```
 #### Communities Nearby
 - **GET** `/users/communities-nearby/`
 - **Description**: Retrieves communities near the specified location.
@@ -230,7 +231,7 @@ All endpoints require authentication using token-based access. Include the token
   - `latitude`: Float (e.g., -1.2921)
   - `longitude`: Float (e.g., 36.8219)
 - **Response (200)**:
-
+```json
 {
   "status": "success",
   "data": [
@@ -243,14 +244,14 @@ All endpoints require authentication using token-based access. Include the token
     }
   ]
 }
-
+```
 - **Error Response (400)**:
-
+```json
 {
   "error_code": "BAD_REQUEST",
   "message": "Missing latitude or longitude"
 }
-
+```
 ### Stock Management
 
 #### List Stock
@@ -259,7 +260,7 @@ All endpoints require authentication using token-based access. Include the token
 - **Headers**:
   - `Authorization: Token <token>`
 - **Response (200)**:
-
+```json
 {
   "status": "success",
   "data": [
@@ -274,14 +275,14 @@ All endpoints require authentication using token-based access. Include the token
     }
   ]
 }
-
+```
 - **Error Response (403)**:
-
+```json
 {
   "error_code": "FORBIDDEN",
   "message": "Insufficient permissions"
 }
-
+```
 #### Add Stock
 - **POST** `/stocks/`
 - **Description**: Adds a new stock item.
@@ -289,16 +290,16 @@ All endpoints require authentication using token-based access. Include the token
   - `Authorization: Token <token>`
   - `Content-Type: application/json`
 - **Request Body**:
-
+```json
 {
   "mamamboga": 1,
   "price": 50.00,
   "quantity": 10.5,
   "expiration_date": "2023-12-31T23:59:59Z"
 }
-
+```
 - **Response (201)**:
-
+```json
 {
   "status": "success",
   "data": {
@@ -311,14 +312,14 @@ All endpoints require authentication using token-based access. Include the token
     "created_at": "2023-12-01T10:00:00Z"
   }
 }
-
+```
 - **Error Response (400)**:
-
+```json
 {
   "error_code": "BAD_REQUEST",
   "message": "Invalid quantity"
 }
-
+```
 ### Orders
 
 #### List Orders
@@ -327,7 +328,7 @@ All endpoints require authentication using token-based access. Include the token
 - **Headers**:
   - `Authorization: Token <token>`
 - **Response (200)**:
-
+```json
 {
   "status": "success",
   "data": [
@@ -344,14 +345,14 @@ All endpoints require authentication using token-based access. Include the token
     }
   ]
 }
-
+```
 - **Error Response (403)**:
-
+```json
 {
   "error_code": "FORBIDDEN",
   "message": "Insufficient permissions"
 }
-
+```
 #### Create Order
 - **POST** `/orders/`
 - **Description**: Creates a new order.
@@ -359,7 +360,7 @@ All endpoints require authentication using token-based access. Include the token
   - `Authorization: Token <token>`
   - `Content-Type: application/json`
 - **Request Body**:
-
+```json
 {
   "mamamboga": 1,
   "product": 1,
@@ -368,9 +369,9 @@ All endpoints require authentication using token-based access. Include the token
   "total_price": 250.00,
   "deadline_at": "2023-12-31T18:00:00Z"
 }
-
+```
 - **Response (201)**:
-
+```json
 {
   "status": "success",
   "data": {
@@ -385,14 +386,14 @@ All endpoints require authentication using token-based access. Include the token
     "created_at": "2023-12-01T10:00:00Z"
   }
 }
-
+```
 - **Error Response (400)**:
-
+```json
 {
   "error_code": "BAD_REQUEST",
   "message": "Invalid product ID"
 }
-
+```
 ### Communities
 
 #### List Communities
@@ -401,7 +402,7 @@ All endpoints require authentication using token-based access. Include the token
 - **Headers**:
   - `Authorization: Token <token>`
 - **Response (200)**:
-
+```json
 {
   "status": "success",
   "data": [
@@ -415,14 +416,14 @@ All endpoints require authentication using token-based access. Include the token
     }
   ]
 }
-
+```
 - **Error Response (403)**:
-
+```json
 {
   "error_code": "FORBIDDEN",
   "message": "Insufficient permissions"
 }
-
+```
 #### Create Community
 - **POST** `/communities/`
 - **Description**: Creates a new community.
@@ -430,7 +431,7 @@ All endpoints require authentication using token-based access. Include the token
   - `Authorization: Token <token>`
   - `Content-Type: application/json`
 - **Request Body**:
-
+```json
 {
   "name": "Community A",
   "description": "A community for Mama Mbogas",
@@ -438,9 +439,9 @@ All endpoints require authentication using token-based access. Include the token
   "longitude": 36.8219,
   "created_by": 1
 }
-
+```
 - **Response (201)**:
-
+```json
 {
   "status": "success",
   "data": {
@@ -452,14 +453,14 @@ All endpoints require authentication using token-based access. Include the token
     "created_by": 1
   }
 }
-
+```
 - **Error Response (400)**:
-
+```json
 {
   "error_code": "BAD_REQUEST",
   "message": "Name is required"
 }
-
+```
 ### Training Sessions
 
 #### List Training Sessions
@@ -468,7 +469,7 @@ All endpoints require authentication using token-based access. Include the token
 - **Headers**:
   - `Authorization: Token <token>`
 - **Response (200)**:
-
+```json
 {
   "status": "success",
   "data": [
@@ -484,14 +485,14 @@ All endpoints require authentication using token-based access. Include the token
     }
   ]
 }
-
+```
 - **Error Response (403)**:
-
+```json
 {
   "error_code": "FORBIDDEN",
   "message": "Insufficient permissions"
 }
-
+```
 #### Create Training Session
 - **POST** `/training-sessions/`
 - **Description**: Creates a new training session.
@@ -499,7 +500,7 @@ All endpoints require authentication using token-based access. Include the token
   - `Authorization: Token <token>`
   - `Content-Type: application/json`
 - **Request Body**:
-
+```json
 {
   "title": "Hygiene Best Practices",
   "description": "Learn about hygiene best practices",
@@ -507,9 +508,9 @@ All endpoints require authentication using token-based access. Include the token
   "start_date": "2023-12-15T09:00:00Z",
   "end_date": "2023-12-15T12:00:00Z"
 }
-
+```
 - **Response (201)**:
-
+```json
 {
   "status": "success",
   "data": {
@@ -523,14 +524,14 @@ All endpoints require authentication using token-based access. Include the token
     "is_cancelled": false
   }
 }
-
+```
 - **Error Response (400)**:
-
+```json
 {
   "error_code": "BAD_REQUEST",
   "message": "Invalid date format"
 }
-
+```
 ### Training Registrations
 
 #### List Training Registrations
@@ -539,7 +540,7 @@ All endpoints require authentication using token-based access. Include the token
 - **Headers**:
   - `Authorization: Token <token>`
 - **Response (200)**:
-
+```json
 {
   "status": "success",
   "data": [
@@ -552,14 +553,14 @@ All endpoints require authentication using token-based access. Include the token
     }
   ]
 }
-
+```
 - **Error Response (403)**:
-
+```json
 {
   "error_code": "FORBIDDEN",
   "message": "Insufficient permissions"
 }
-
+```
 #### Register for Training
 - **POST** `/training-registrations/`
 - **Description**: Registers a user for a training session.
@@ -567,15 +568,15 @@ All endpoints require authentication using token-based access. Include the token
   - `Authorization: Token <token>`
   - `Content-Type: application/json`
 - **Request Body**:
-
+```json
 {
   "session": 1,
   "community": 1,
   "mamamboga": 1
 }
-
+```
 - **Response (201)**:
-
+```json
 {
   "status": "success",
   "data": {
@@ -586,14 +587,14 @@ All endpoints require authentication using token-based access. Include the token
     "registration_date": "2023-12-01T10:00:00Z"
   }
 }
-
+```
 - **Error Response (400)**:
-
+```json
 {
   "error_code": "BAD_REQUEST",
   "message": "Session ID is invalid"
 }
-
+```
 ### Products
 
 #### List Products
@@ -602,7 +603,7 @@ All endpoints require authentication using token-based access. Include the token
 - **Headers**:
   - `Authorization: Token <token>`
 - **Response (200)**:
-
+```json
 {
   "status": "success",
   "data": [
@@ -617,14 +618,14 @@ All endpoints require authentication using token-based access. Include the token
     }
   ]
 }
-
+```
 - **Error Response (403)**:
-
+```json
 {
   "error_code": "FORBIDDEN",
   "message": "Insufficient permissions"
 }
-
+```
 ### Cart Management
 
 #### List Carts
@@ -633,7 +634,7 @@ All endpoints require authentication using token-based access. Include the token
 - **Headers**:
   - `Authorization: Token <token>`
 - **Response (200)**:
-
+```json
 {
   "status": "success",
   "data": [
@@ -646,21 +647,21 @@ All endpoints require authentication using token-based access. Include the token
     }
   ]
 }
-
+```
 - **Error Response (403)**:
-
+```json
 {
   "error_code": "FORBIDDEN",
   "message": "Insufficient permissions"
 }
-
+```
 #### List Cart Items
 - **GET** `/cart-items/`
 - **Description**: Retrieves a list of items in carts.
 - **Headers**:
   - `Authorization: Token <token>`
 - **Response (200)**:
-
+```json
 {
   "status": "success",
   "data": [
@@ -672,14 +673,14 @@ All endpoints require authentication using token-based access. Include the token
     }
   ]
 }
-
+```
 - **Error Response (403)**:
-
+```json
 {
   "error_code": "FORBIDDEN",
   "message": "Insufficient permissions"
 }
-
+```
 ### Payment Processing
 
 #### Initiate M-Pesa Payment
@@ -689,7 +690,7 @@ All endpoints require authentication using token-based access. Include the token
   - `Authorization: Token <token>`
   - `Content-Type: application/json`
 - **Request Body**:
-
+```json
 {
   "phone_number": "254712345678",
   "amount": 250.00,
@@ -702,9 +703,9 @@ All endpoints require authentication using token-based access. Include the token
   "account_reference": "ORDER123",
   "transaction_desc": "Payment for order"
 }
-
+```
 - **Response (200)**:
-
+```json
 {
   "status": "success",
   "data": {
@@ -715,14 +716,14 @@ All endpoints require authentication using token-based access. Include the token
     "CustomerMessage": "Success. Request accepted for processing"
   }
 }
-
+```
 - **Error Response (400)**:
-
+```json
 {
   "error_code": "BAD_REQUEST",
   "message": "Invalid phone number"
 }
-
+```
 ### Webhooks
 
 #### M-Pesa Payment Callback
@@ -732,7 +733,7 @@ All endpoints require authentication using token-based access. Include the token
   - `Authorization: Token <token>`
   - `Content-Type: application/json`
 - **Request Body**:
-
+```json
 {
   "Body": {
     "stkCallback": {
@@ -755,9 +756,9 @@ All endpoints require authentication using token-based access. Include the token
     }
   }
 }
-
+```
 - **Response (200)**:
-
+```json
 {
   "status": "success",
   "data": {
@@ -765,12 +766,11 @@ All endpoints require authentication using token-based access. Include the token
     "ResultDesc": "Accepted"
   }
 }
-
+```
 - **Error Response (400)**:
-
+```json
 {
   "error_code": "BAD_REQUEST",
   "message": "Invalid callback data"
 }
-
 ```
