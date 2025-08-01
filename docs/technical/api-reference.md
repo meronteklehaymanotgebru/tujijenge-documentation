@@ -19,6 +19,7 @@ All endpoints require authentication using token-based access. Include the token
 | 500 | INTERNAL_SERVER_ERROR | Server error |
 
 **Example Error Response**:
+
 ```json
 {
   "error_code": "BAD_REQUEST",
@@ -27,9 +28,10 @@ All endpoints require authentication using token-based access. Include the token
 
 EndpointsAuthenticationMama Mboga LoginPOST /users/login/
 Description: Authenticates a Mama Mboga user using phone number and PIN.
-Headers:Content-Type: application/json
 
-Request Body:json
+
+Request Body:
+```json
 
 {
   "phone_number": "254712345678",
@@ -37,7 +39,8 @@ Request Body:json
   "user_type": "mamamboga"
 }
 
-Response (200):json
+Response (200):
+```json
 
 {
   "status": "success",
@@ -46,7 +49,8 @@ Response (200):json
   }
 }
 
-Error Response (401):json
+Error Response (401):
+```json
 
 {
   "error_code": "UNAUTHORIZED",
@@ -55,9 +59,10 @@ Error Response (401):json
 
 Stakeholder LoginPOST /users/login/
 Description: Authenticates a stakeholder user using email and password.
-Headers:Content-Type: application/json
 
-Request Body:json
+
+Request Body:
+```json
 
 {
   "user_type": "stakeholder",
@@ -65,7 +70,8 @@ Request Body:json
   "password_hash": "password123"
 }
 
-Response (200):json
+Response (200):
+```json
 
 {
   "status": "success",
@@ -81,7 +87,8 @@ Response (200):json
   }
 }
 
-Error Response (401):json
+Error Response (401):
+```json
 
 {
   "error_code": "UNAUTHORIZED",
@@ -90,9 +97,10 @@ Error Response (401):json
 
 RegisterPOST /users/register/
 Description: Registers a new Mama Mboga or stakeholder user.
-Headers:Content-Type: application/json
 
-Request Body (Mama Mboga):json
+
+Request Body (Mama Mboga):
+```json
 
 {
   "user_type": "mamamboga",
@@ -102,7 +110,8 @@ Request Body (Mama Mboga):json
   "pin": "1234"
 }
 
-Request Body (Stakeholder):json
+Request Body (Stakeholder):
+```json
 
 {
   "user_type": "stakeholder",
@@ -113,7 +122,8 @@ Request Body (Stakeholder):json
   "role": "trainer"
 }
 
-Response (201):json
+Response (201):
+```json
 
 {
   "status": "success",
@@ -122,7 +132,8 @@ Response (201):json
   }
 }
 
-Error Response (400):json
+Error Response (400):
+```json
 
 {
   "error_code": "BAD_REQUEST",
@@ -133,14 +144,16 @@ LogoutPOST /users/logout/
 Description: Logs out the authenticated user, invalidating the token.
 Headers:Authorization: Token <token>
 
-Response (200):json
+Response (200):
+```json
 
 {
   "status": "success",
   "message": "Logged out successfully"
 }
 
-Error Response (401):json
+Error Response (401):
+```json
 
 {
   "error_code": "UNAUTHORIZED",
@@ -151,7 +164,8 @@ UsersList UsersGET /users/
 Description: Retrieves a list of users.
 Headers:Authorization: Token <token>
 
-Response (200):json
+Response (200):
+```json
 
 {
   "status": "success",
@@ -172,7 +186,8 @@ Response (200):json
   ]
 }
 
-Error Response (403):json
+Error Response (403):
+```json
 
 {
   "error_code": "FORBIDDEN",
@@ -182,9 +197,11 @@ Error Response (403):json
 Update LocationPOST /users/update-location/
 Description: Updates the location of the authenticated user.
 Headers:Authorization: Token <token>
-Content-Type: application/json
+Content-Type: application/
+```json
 
-Request Body:json
+Request Body:
+```json
 
 {
   "id": 1,
@@ -192,7 +209,8 @@ Request Body:json
   "longitude": 36.8219
 }
 
-Response (200):json
+Response (200):
+```json
 
 {
   "status": "success",
@@ -201,7 +219,8 @@ Response (200):json
   }
 }
 
-Error Response (400):json
+Error Response (400):
+```json
 
 {
   "error_code": "BAD_REQUEST",
@@ -215,7 +234,8 @@ Headers:Authorization: Token <token>
 Query Parameters:latitude: Float (e.g., -1.2921)
 longitude: Float (e.g., 36.8219)
 
-Response (200):json
+Response (200):
+```json
 
 {
   "status": "success",
@@ -230,7 +250,8 @@ Response (200):json
   ]
 }
 
-Error Response (400):json
+Error Response (400):
+```json
 
 {
   "error_code": "BAD_REQUEST",
@@ -241,7 +262,8 @@ Stock ManagementList StockGET /stocks/
 Description: Retrieves a list of stock items.
 Headers:Authorization: Token <token>
 
-Response (200):json
+Response (200):
+```json
 
 {
   "status": "success",
@@ -258,7 +280,8 @@ Response (200):json
   ]
 }
 
-Error Response (403):json
+Error Response (403):
+```json
 
 {
   "error_code": "FORBIDDEN",
@@ -268,9 +291,11 @@ Error Response (403):json
 Add StockPOST /stocks/
 Description: Adds a new stock item.
 Headers:Authorization: Token <token>
-Content-Type: application/json
+Content-Type: application/
+```json
 
-Request Body:json
+Request Body:
+```json
 
 {
   "mamamboga": 1,
@@ -279,7 +304,8 @@ Request Body:json
   "expiration_date": "2023-12-31T23:59:59Z"
 }
 
-Response (201):json
+Response (201):
+```json
 
 {
   "status": "success",
@@ -294,7 +320,8 @@ Response (201):json
   }
 }
 
-Error Response (400):json
+Error Response (400):
+```json
 
 {
   "error_code": "BAD_REQUEST",
@@ -305,7 +332,8 @@ OrdersList OrdersGET /orders/
 Description: Retrieves a list of orders.
 Headers:Authorization: Token <token>
 
-Response (200):json
+Response (200):
+```json
 
 {
   "status": "success",
@@ -324,7 +352,8 @@ Response (200):json
   ]
 }
 
-Error Response (403):json
+Error Response (403):
+```json
 
 {
   "error_code": "FORBIDDEN",
@@ -334,9 +363,11 @@ Error Response (403):json
 Create OrderPOST /orders/
 Description: Creates a new order.
 Headers:Authorization: Token <token>
-Content-Type: application/json
+Content-Type: application/
+```json
 
-Request Body:json
+Request Body:
+```json
 
 {
   "mamamboga": 1,
@@ -347,7 +378,8 @@ Request Body:json
   "deadline_at": "2023-12-31T18:00:00Z"
 }
 
-Response (201):json
+Response (201):
+```json
 
 {
   "status": "success",
@@ -364,7 +396,8 @@ Response (201):json
   }
 }
 
-Error Response (400):json
+Error Response (400):
+```json
 
 {
   "error_code": "BAD_REQUEST",
@@ -375,7 +408,8 @@ CommunitiesList CommunitiesGET /communities/
 Description: Retrieves a list of communities.
 Headers:Authorization: Token <token>
 
-Response (200):json
+Response (200):
+```json
 
 {
   "status": "success",
@@ -391,7 +425,8 @@ Response (200):json
   ]
 }
 
-Error Response (403):json
+Error Response (403):
+```json
 
 {
   "error_code": "FORBIDDEN",
@@ -401,9 +436,11 @@ Error Response (403):json
 Create CommunityPOST /communities/
 Description: Creates a new community.
 Headers:Authorization: Token <token>
-Content-Type: application/json
+Content-Type: application/
+```json
 
-Request Body:json
+Request Body:
+```json
 
 {
   "name": "Community A",
@@ -413,7 +450,8 @@ Request Body:json
   "created_by": 1
 }
 
-Response (201):json
+Response (201):
+```json
 
 {
   "status": "success",
@@ -427,7 +465,8 @@ Response (201):json
   }
 }
 
-Error Response (400):json
+Error Response (400):
+```json
 
 {
   "error_code": "BAD_REQUEST",
@@ -438,7 +477,8 @@ Training SessionsList Training SessionsGET /training-sessions/
 Description: Retrieves a list of training sessions.
 Headers:Authorization: Token <token>
 
-Response (200):json
+Response (200):
+```json
 
 {
   "status": "success",
@@ -456,7 +496,8 @@ Response (200):json
   ]
 }
 
-Error Response (403):json
+Error Response (403):
+```json
 
 {
   "error_code": "FORBIDDEN",
@@ -466,9 +507,11 @@ Error Response (403):json
 Create Training SessionPOST /training-sessions/
 Description: Creates a new training session.
 Headers:Authorization: Token <token>
-Content-Type: application/json
+Content-Type: application/
+```json
 
-Request Body:json
+Request Body:
+```json
 
 {
   "title": "Hygiene Best Practices",
@@ -478,7 +521,8 @@ Request Body:json
   "end_date": "2023-12-15T12:00:00Z"
 }
 
-Response (201):json
+Response (201):
+```json
 
 {
   "status": "success",
@@ -494,7 +538,8 @@ Response (201):json
   }
 }
 
-Error Response (400):json
+Error Response (400):
+```json
 
 {
   "error_code": "BAD_REQUEST",
@@ -505,7 +550,8 @@ Training RegistrationsList Training RegistrationsGET /training-registrations/
 Description: Retrieves a list of training registrations.
 Headers:Authorization: Token <token>
 
-Response (200):json
+Response (200):
+```json
 
 {
   "status": "success",
@@ -520,7 +566,8 @@ Response (200):json
   ]
 }
 
-Error Response (403):json
+Error Response (403):
+```json
 
 {
   "error_code": "FORBIDDEN",
@@ -530,9 +577,11 @@ Error Response (403):json
 Register for TrainingPOST /training-registrations/
 Description: Registers a user for a training session.
 Headers:Authorization: Token <token>
-Content-Type: application/json
+Content-Type: application/
+```json
 
-Request Body:json
+Request Body:
+```json
 
 {
   "session": 1,
@@ -540,7 +589,8 @@ Request Body:json
   "mamamboga": 1
 }
 
-Response (201):json
+Response (201):
+```json
 
 {
   "status": "success",
@@ -553,7 +603,8 @@ Response (201):json
   }
 }
 
-Error Response (400):json
+Error Response (400):
+```json
 
 {
   "error_code": "BAD_REQUEST",
@@ -564,7 +615,8 @@ ProductsList ProductsGET /products/
 Description: Retrieves a list of products.
 Headers:Authorization: Token <token>
 
-Response (200):json
+Response (200):
+```json
 
 {
   "status": "success",
@@ -581,7 +633,8 @@ Response (200):json
   ]
 }
 
-Error Response (403):json
+Error Response (403):
+```json
 
 {
   "error_code": "FORBIDDEN",
@@ -592,7 +645,8 @@ Cart ManagementList CartsGET /carts/
 Description: Retrieves a list of carts. Note: session_id is reserved for future use and currently returns null.
 Headers:Authorization: Token <token>
 
-Response (200):json
+Response (200):
+```json
 
 {
   "status": "success",
@@ -607,7 +661,8 @@ Response (200):json
   ]
 }
 
-Error Response (403):json
+Error Response (403):
+```json
 
 {
   "error_code": "FORBIDDEN",
@@ -618,7 +673,8 @@ List Cart ItemsGET /cart-items/
 Description: Retrieves a list of items in carts.
 Headers:Authorization: Token <token>
 
-Response (200):json
+Response (200):
+```json
 
 {
   "status": "success",
@@ -632,7 +688,8 @@ Response (200):json
   ]
 }
 
-Error Response (403):json
+Error Response (403):
+```json
 
 {
   "error_code": "FORBIDDEN",
@@ -642,9 +699,11 @@ Error Response (403):json
 Payment ProcessingInitiate M-Pesa PaymentPOST /daraja/stk-push/
 Description: Initiates an M-Pesa STK push payment.
 Headers:Authorization: Token <token>
-Content-Type: application/json
+Content-Type: application/
+```json
 
-Request Body:json
+Request Body:
+```json
 
 {
   "phone_number": "254712345678",
@@ -659,7 +718,8 @@ Request Body:json
   "transaction_desc": "Payment for order"
 }
 
-Response (200):json
+Response (200):
+```json
 
 {
   "status": "success",
@@ -672,7 +732,8 @@ Response (200):json
   }
 }
 
-Error Response (400):json
+Error Response (400):
+```json
 
 {
   "error_code": "BAD_REQUEST",
@@ -682,9 +743,11 @@ Error Response (400):json
 WebhooksM-Pesa Payment CallbackPOST /daraja/callback/
 Description: Receives payment confirmation from M-Pesa.
 Headers:Authorization: Token <token>
-Content-Type: application/json
+Content-Type: application/
+```json
 
-Request Body:json
+Request Body:
+```json
 
 {
   "Body": {
@@ -709,7 +772,8 @@ Request Body:json
   }
 }
 
-Response (200):json
+Response (200):
+```json
 
 {
   "status": "success",
@@ -719,7 +783,8 @@ Response (200):json
   }
 }
 
-Error Response (400):json
+Error Response (400):
+```json
 
 {
   "error_code": "BAD_REQUEST",
