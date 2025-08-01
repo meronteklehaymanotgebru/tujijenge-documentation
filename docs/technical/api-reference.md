@@ -35,6 +35,7 @@ All endpoints require authentication using token-based access. Include the token
 - **Headers**:
   - `Content-Type: application/json`
 - **Request Body**:
+```json
 
 {
   "phone_number": "254712345678",
@@ -772,3 +773,4 @@ All endpoints require authentication using token-based access. Include the token
   "message": "Invalid callback data"
 }
 
+```
